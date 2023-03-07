@@ -1,0 +1,13 @@
+server:
+    port: 8085
+management:
+    tracing:
+        sampling:
+            probability: 1.0
+    endpoints:
+        web:
+            exposure:
+                include: health,prometheus
+    zipkin:
+        tracing:
+            endpoint: http://localhost:9411/
