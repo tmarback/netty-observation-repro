@@ -16,6 +16,8 @@ import reactor.core.publisher.Mono;
 import reactor.netty.http.client.HttpClient;
 import reactor.netty.http.client.HttpClientResponse;
 
+import static reactor.netty.Metrics.OBSERVATION_REGISTRY;
+
 @RestController
 @RequestMapping("/test")
 public class Controller {
@@ -27,6 +29,7 @@ public class Controller {
 
     public Controller(ObservationRegistry registry) {
         this.registry = registry;
+        OBSERVATION_REGISTRY = registry;
         this.http = HttpClient.create().metrics( true, Function.identity() );
     }
 
